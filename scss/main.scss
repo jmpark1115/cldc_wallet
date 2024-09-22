@@ -1,0 +1,509 @@
+@import "./common";
+
+// MAIN
+main {
+    .userInfo {
+        height: $height--userInfo;
+        .imgWrap {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            > p {
+                width: fit-content;
+                margin: .3rem 0;
+            }
+            input {
+                text-align: center;
+                &.userAddress {
+                    cursor: pointer;
+                }
+            }
+            .img {
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+                border-radius: 100%;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .tabWrap {
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            padding-top: 1.5em;
+            justify-content: space-between;
+            margin: 0 auto;
+            li {
+                &:not(:first-child), > a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 0 1em;
+                    cursor: pointer;
+                    transition: .2s;
+                }
+                i {
+                    background-color: $color--point;
+                    border-radius: 100%;
+                    padding: 8px;
+                    font-size: 1.3em;
+                    // mining
+                    img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+                span {
+                    color: $color--point;
+                    text-transform: capitalize;
+                    font-weight: 900;
+                    font-size: .8em;
+                    padding-top: .5em;
+                }
+                &.clicked {
+                    opacity: .2;
+                    cursor: default;
+                    i {
+                        background-color: $color--darkColor;
+                    }
+                    span {
+                        color: $color--darkColor;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .sectionWrap {
+        height: calc(100vh - $height--header - $height--userInfo);
+        overflow-y: auto;
+        touch-action: auto;
+    }
+
+    .successWrap {
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .material-symbols-outlined {
+            font-weight: 900;
+            font-size: 6em;
+        }
+        .txt {
+            > * {
+                display: block;
+            }
+            b {
+                font-size: 3em;
+            }
+            span {
+                color: #728997;
+                i {
+                    font-style: normal;
+                    padding-right: .4em;
+                }
+            }
+        }
+    }
+
+    #home {
+        .tokens-title {
+            display: flex;
+            li {
+                flex-basis: 0;
+                flex-grow: 1;
+                text-align: center;
+                a {
+                    display: block;
+                    line-height: 3;
+                    font-weight: 900;
+                    font-size: .9em;
+                    border-bottom: 1px solid $color--border;
+                    position: relative;
+                    &::after {
+                        content: '';
+                        display: block;
+                        height: 2px;
+                        width: 100%;
+                        position: absolute;
+                        bottom: -1px;
+                    }
+                    &.active {
+                        color: $color--point !important;
+                        &::after {
+                            background-color: $color--point;
+                        }
+                    }
+                }     
+            }
+        }
+        .tokens-main {
+            line-height: 1.5;
+            section {
+                padding-top: 0;
+            }
+            .tokens, .history {
+                font-size: .9em;
+                li {
+                    padding: 1em;
+                    border-bottom: 1px solid $color--border;
+                    display: flex;
+                    align-items: center;
+                    &:first-child {
+                        padding-top: 1.5em;
+                    }
+                    div {
+                        display: flex;
+                        align-items: center;
+                        flex-grow: 1;
+                        p span {
+                            display: block;
+                            i {
+                                font-style: normal;
+                            }
+                        }
+                    }
+                }
+            }
+            .tokens div {
+                text-transform: uppercase;
+                img {
+                    padding-right: 1rem;
+                    width: 2.5em;
+                    background-color: transparent;
+                }
+            }
+            .history {
+                .icon span {
+                    padding-right: 1rem;
+                    color: darken($color: $color--point, $amount: 5%);
+                    font-size: 2em;
+                }
+                .amount {
+                    margin-left: auto;
+                }
+                .noHistory {
+                    border: none;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    #mining {
+        .btn-wrap {
+            width: 170px;
+            margin-left: auto;
+            text-align: center;
+            font-size: .9em;
+        }
+        .miningList {
+            button.miningAdd {
+                width: 200px;
+                margin-left: auto;
+            }
+            .minerList {
+                line-height: 1.5;
+                font-size: 18px;
+                border-top: 1px solid $color--border;
+                .sm-txt {
+                    font-size: .8em;
+                    padding-right: .6em;
+                }
+                li {
+                    border-bottom: 1px solid $color--border;
+                    display: flex;
+                    align-items: center;
+                    padding: .5em 0;
+                    .left {
+                        display: flex;
+                        flex-direction: column;
+                        flex-grow: 1;
+                        font-size: .8em;
+                        .title {
+                            font-size: 1.5em;
+                            padding-bottom: .5em;
+                            .sm-txt {
+                                color: lighten($color: #4f5b62, $amount: 20%);
+                                padding-left: .6em;
+                            }
+                        }
+                        .balance {
+                            padding-bottom: .3em;
+                            display: flex;
+                            span span {
+                                font-size: .94em;
+                                color: #ccc;
+                            }
+                        }
+                    }
+                    .btn-wrap {
+                        flex-direction: column;
+                        font-size: .9em;
+                        button {
+                            margin: 0;
+                            &:nth-child(n+2) {
+                                margin-top: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        section.miningAdd,
+        section.miningSend {
+            label {
+                display: block;
+                font-size: .8em;
+                padding: 1em 0 .4em;
+                text-indent: .8em;
+            }
+            input {
+                width: 100%;
+                line-height: 4;
+                border: 1px solid #eeeeee29;
+                border-radius: 10px;
+                text-indent: 1em;
+            }
+        }
+        section.miningSend {
+            .successWrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    #receive {
+        height: 100%;
+        box-sizing: border-box;
+
+        .inner {
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            h4 {
+                font-size: 1.4em;
+            }
+            .qrWrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                p {
+                    width: 70%;
+                    word-break: break-all;
+                    line-height: 1.8;
+                    margin-top: 5%;
+                }
+            }
+            .btn-wrap {
+                width: 300px;
+                text-align: center;
+                margin-top: 4%;
+            }
+        }
+    }
+
+    #send {
+        // VAR
+        $width--label: 4em;
+        .addressWrap > div {
+            display: flex;
+            align-items: center;
+            padding-bottom: 2%;
+            .address_head {
+                width: $width--label;
+            }
+            .address_body {
+                width: calc(100% - $width--label);
+                input {
+                    width: 100%;
+                    border: 1px solid $color--font-dark;
+                    border-radius: 6px;
+                    padding: 2%;
+                    box-sizing: border-box;
+                }
+                .fromAddress {
+                    box-sizing: border-box;
+                    width: 100%;
+                    background-color: transparent;
+                }
+            }
+            &.sm-txt {
+                justify-content: flex-end;
+            }
+        }
+        .btn-wrap {
+            margin-top: $padding--section;
+            margin: 0 auto;
+            text-align: center;
+            a {
+                text-transform: uppercase;
+            }
+        }
+        .main.amount {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 7% 0;
+            input {
+                font-size: 4em;
+                text-align: center;
+                width: 100%;
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+            .coinType {
+                text-transform: uppercase;
+            }
+        }
+        .firstStep {
+            .btn-wrap {
+                width: 200px;
+            }
+        }
+        .secondStep {
+            .head {
+                $color--darkgray: #2c3e50;
+                $color--gray: #34495e;
+                position: relative;
+                .selectWrap {
+                    width: 100px;
+                    height: 2em;
+                    margin: auto;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: .25em;
+                    overflow: hidden;
+                    input {
+                        text-align: center;
+                    }
+                }
+                .useMax {
+                    margin-left: auto;
+                    width: fit-content;
+                    font-size: .7em;
+                    letter-spacing: .7px;
+                    cursor: pointer;
+                    color: $color--point;
+                }
+            }
+        }
+        .thirdStep {
+            .feeWrap {
+                p {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: .3em 0;
+                    span {
+                        display: block;
+                    }
+                    input {
+                        text-align: right;
+                        font-size: 1em;
+                        &.calTotal {
+                            font-weight: 700;
+                        }
+                    }
+                    &.sm-txt {
+                        justify-content: flex-end;
+                    }
+                }
+            }
+        }
+        .noTransaction {
+            div {
+                margin: 0 auto;
+            }
+            div:first-child {
+                max-width: 370px;
+                display: flex;
+                flex-direction: column;
+                .iconWrap {
+                    text-align: center;
+                    h3 {
+                        padding-bottom: 1rem;
+                        font-size: 5em;
+                        color: $color--point;
+                        opacity: .6;
+                        font-variation-settings:
+                            'FILL' 0,
+                            'wght' 300,
+                            'GRAD' 0,
+                            'opsz' 48
+                    }
+                }
+                .infoWrap {
+                    padding-top: 1em;
+                    .time {
+                        font-size: .8em;
+                        text-align: right;
+                    }
+                    p {
+                        padding-bottom: .5rem;
+                    }
+                }
+            }
+            .successWrap {
+                text-align: center;
+            }
+        }
+    }
+}
+
+.popupWrap {
+    .copyAlert {
+        width: 100%;
+        position: fixed;
+        bottom: 3vh;
+        z-index: 10;
+        display: flex;
+        transition: 1s;
+        p {
+            margin: 0 auto;
+            padding: .8em 3em;
+            border-radius: 5px;
+            background-color: $color--bg-dark;
+            font-size: .9em;
+            color: $color--font-dark;
+        }
+        &.isDown {
+            opacity: 0;
+            bottom: -10vh;
+        }
+    }
+}
+
+// 미디어쿼리
+@include mobile{ 
+    body {
+        overflow: auto;
+    }
+    main #mining {
+        .miningList .minerList {
+            font-size: 16px;
+            li .left .title {
+                display: flex;
+                flex-direction: column;
+                .sm-txt {
+                    padding-left: 0;
+                }
+            }
+        }
+        .btn-wrap {
+            width: 150px;
+        }
+    }
+}
